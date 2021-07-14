@@ -140,10 +140,11 @@ def encode_structured_data(
     .. _EIP-712: https://eips.ethereum.org/EIPS/eip-712
     """
     if isinstance(primitive, Mapping):
-        message_string = json.dumps(primitive)
+        validate_structured_data(primitive) 
+        structured_data = primitive
     else:
         message_string = to_text(primitive, hexstr=hexstr, text=text)
-    structured_data = load_and_validate_structured_message(message_string)
+        structured_data = load_and_validate_structured_message(message_string)
     return SignableMessage(
         HexBytes(b'\x01'),
         hash_domain(structured_data),

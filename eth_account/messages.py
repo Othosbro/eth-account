@@ -11,6 +11,7 @@ from eth_typing import (
     Address,
     Hash32,
 )
+
 from eth_utils.curried import (
     ValidationError,
     keccak,
@@ -19,6 +20,7 @@ from eth_utils.curried import (
     to_canonical_address,
     to_text,
 )
+
 from hexbytes import (
     HexBytes,
 )
@@ -28,8 +30,13 @@ from eth_account._utils.structured_data.hashing import (
     hash_message as hash_eip712_message,
     load_and_validate_structured_message,
 )
+
 from eth_account._utils.validation import (
     is_valid_address,
+)
+
+from eth_account._utils.structured_data.validation import (
+    validate_structured_data,
 )
 
 text_to_bytes = text_if_str(to_bytes)

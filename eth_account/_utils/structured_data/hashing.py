@@ -198,6 +198,7 @@ def _encode_data(primary_type, types, data):
                     )
                 )
             # Special case where the values need to be keccak hashed before they are encoded
+            value = bytearray.fromhex(value.decode('utf-8').replace('0x', ''))
             hashed_value = keccak(primitive=value)
             yield "bytes32", hashed_value
         elif field["type"] in types:
